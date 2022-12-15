@@ -24,7 +24,7 @@ io.on('connection', socket => {
       offer: data.offer
     });
   });
-  
+
   socket.on('mediaAnswer', data => {
     socket.to(data.to).emit('mediaAnswer', {
       from: data.from,
@@ -45,5 +45,5 @@ io.on('connection', socket => {
 });
 
 http.listen(3000, () => {
-  console.log('listening on *:3000');
+  console.log('listening on *:80');
 });

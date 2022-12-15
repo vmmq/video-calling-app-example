@@ -1,3 +1,5 @@
+import * as faceapi from "face-api.js";
+
 // Creating the peer
 const peer = new RTCPeerConnection({
   iceServers: [
@@ -26,7 +28,7 @@ let callButton = document.querySelector('#call');
 callButton.addEventListener('click', async () => {
   const localPeerOffer = await peer.createOffer();
   await peer.setLocalDescription(new RTCSessionDescription(localPeerOffer));
-  
+
   sendMediaOffer(localPeerOffer);
 });
 
@@ -93,7 +95,7 @@ const onUpdateUserList = ({ userIds }) => {
   const usersToDisplay = userIds.filter(id => id !== socket.id);
 
   usersList.innerHTML = '';
-  
+
   usersToDisplay.forEach(user => {
     const userItem = document.createElement('div');
     userItem.innerHTML = user;
